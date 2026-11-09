@@ -2,9 +2,9 @@ title: Telkom Labs
 description: Applied AI for Internet infrastructure.
 lang: en
 
-# Project site on GitHub Pages. For a custom domain, set url to the domain and baseurl to "".
-url: "https://telkom-labs.github.io"
-baseurl: "/homepage"
+# Served at the custom domain in CNAME (set under Settings → Pages), from the domain root.
+url: "https://telkomlabs.org"
+baseurl: ""
 
 markdown: kramdown
 kramdown:

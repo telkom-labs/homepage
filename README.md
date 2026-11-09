@@ -6,7 +6,7 @@
 
 Applied AI for Internet infrastructure.
 
-**Live site:** https://telkom-labs.github.io/homepage/
+**Live site:** https://telkomlabs.org
 
 A static Jekyll site, built and hosted by GitHub Pages from the `main` branch. No JavaScript is needed to read it; the only script is an optional filter on the publications list.
 
@@ -29,10 +29,8 @@ bundle install
 bundle exec jekyll serve
 ```
 
-Then open http://localhost:4000/homepage/.
+Then open http://localhost:4000/.
 
-## Custom domain
+## Domain
 
-1. Add the domain under **Settings → Pages**.
-2. Point the domain's DNS at GitHub Pages.
-3. In `_config.yml`, set `url` to the domain and `baseurl` to `""`.
+The site is served at `telkomlabs.org`, set under **Settings → Pages** and stored in `CNAME`. DNS for the domain is managed in Cloudflare and points at GitHub Pages.
