@@ -1,0 +1,13 @@
+<header class="site-header">
+  <div class="wrap header-bar">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <img src="{{ '/assets/images/logo.svg' | relative_url }}" alt="" width="52" height="38">
+      <span>Telkom Labs</span>
+    </a>
+    <nav class="nav" aria-label="Main">{% include nav-links.html %}</nav>
+    <details class="menu">
+      <summary aria-label="Menu"><span class="menu-icon"></span></summary>
+      <nav aria-label="Main">{% include nav-links.html %}</nav>
+    </details>
+  </div>
+</header>

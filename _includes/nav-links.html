@@ -1,0 +1,6 @@
+{%- assign links = "research:Research,projects:Projects,about:About" | split: "," -%}
+{%- for link in links -%}
+  {%- assign parts = link | split: ":" -%}
+  {%- assign href = "/" | append: parts[0] | append: "/" -%}
+  <a href="{{ href | relative_url }}"{% if page.section == parts[0] %} aria-current="page"{% endif %}>{{ parts[1] }}</a>
+{%- endfor -%}

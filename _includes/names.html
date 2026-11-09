@@ -1,0 +1,4 @@
+{%- for id in include.ids -%}
+  {%- assign person = site.data.collaborators | where: "id", id | first -%}
+  {{- person.short -}}{%- unless forloop.last -%}, {% endunless -%}
+{%- endfor -%}

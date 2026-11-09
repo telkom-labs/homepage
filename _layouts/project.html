@@ -1,0 +1,45 @@
+---
+layout: default
+---
+<div class="wrap page">
+  <header class="page-head">
+    <p class="eyebrow"><a href="{{ '/projects/' | relative_url }}">Projects</a> / Products</p>
+    <div class="title-row"><h1>{{ page.title }}</h1><span class="chip y">{{ page.status }}</span></div>
+    <p class="intro">{{ page.lede }}</p>
+    <p class="out-link"><a href="{{ page.link }}">{{ page.link_label }} →</a></p>
+  </header>
+
+  <div class="project">
+    <div class="project-main">
+      <section>
+        <h2 class="rule rule-projects">What it does</h2>
+        <ul class="features">
+          {%- for f in page.features %}
+          <li><strong>{{ f.name }}</strong><span>{{ f.text }}</span></li>
+          {%- endfor %}
+        </ul>
+      </section>
+      <section>
+        <h2 class="rule rule-projects">How it is built</h2>
+        <dl class="stack">
+          {%- for s in page.stack %}
+          <div><dt>{{ s.label }}</dt><dd>{{ s.value }}</dd></div>
+          {%- endfor %}
+        </dl>
+      </section>
+      {{ content }}
+    </div>
+    <aside class="project-side">
+      <dl>
+        <div><dt>Status</dt><dd>{{ page.status }}{% if page.since %} since {{ page.since }}{% endif %}</dd></div>
+        <div><dt>Platform</dt><dd>{{ page.platform }}</dd></div>
+        <div><dt>Team</dt><dd>
+          {%- for id in page.team %}
+          {%- assign person = site.data.collaborators | where: "id", id | first %}
+          {{ person.name }}{% unless forloop.last %}<br>{% endunless %}
+          {%- endfor %}
+        </dd></div>
+      </dl>
+    </aside>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+title: Telkom Labs
+description: Applied AI for Internet infrastructure.
+lang: en
+
+# Project site on GitHub Pages. For a custom domain, set url to the domain and baseurl to "".
+url: "https://telkom-labs.github.io"
+baseurl: "/homepage"
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+collections:
+  publications:
+    output: true
+    permalink: /research/:name/
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+defaults:
+  - scope: { path: "", type: publications }
+    values: { layout: paper, section: research }
+  - scope: { path: "", type: projects }
+    values: { layout: project, section: projects }
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

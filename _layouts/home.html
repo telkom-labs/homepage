@@ -1,0 +1,39 @@
+---
+layout: default
+---
+{%- assign pubs = site.publications | sort: "year" | reverse -%}
+{%- assign products = site.projects | sort: "order" -%}
+<section class="hero">
+  <div class="hero-net" aria-hidden="true">{% include network.svg %}</div>
+  <div class="wrap hero-copy">
+    <h1>{{ page.headline }}</h1>
+    <p>{{ page.lede }}</p>
+  </div>
+</section>
+
+<div class="wrap home-blocks">
+  <section class="block rule rule-research">
+    <header><h2>Research</h2><a href="{{ '/research/' | relative_url }}">All papers →</a></header>
+    <ul>
+      {%- for p in pubs limit: 2 %}
+      <li>
+        <a class="item-title" href="{{ p.url | relative_url }}">{{ p.title }}</a>
+        <span>{{ p.topic }} · {{ p.venue_short }}, {{ p.year }}</span>
+      </li>
+      {%- endfor %}
+    </ul>
+  </section>
+  <section class="block rule rule-projects">
+    <header><h2>Projects</h2><a href="{{ '/projects/' | relative_url }}">All projects →</a></header>
+    <ul>
+      {%- for p in products %}
+      <li>
+        <a class="item-title" href="{{ p.url | relative_url }}">{{ p.title }}</a>
+        <span>{{ p.home_summary }}</span>
+        <span class="team">{% include names.html ids=p.team %}</span>
+      </li>
+      {%- endfor %}
+    </ul>
+  </section>
+</div>
+{{ content }}

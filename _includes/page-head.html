@@ -1,0 +1,5 @@
+<header class="page-head">
+  <p class="eyebrow">{% if include.parent %}<a href="{{ include.parent_url | relative_url }}">{{ include.parent }}</a> / {% endif %}{{ include.eyebrow }}</p>
+  <h1>{{ include.title }}</h1>
+  {% if include.intro %}<p class="intro">{{ include.intro }}</p>{% endif %}
+</header>

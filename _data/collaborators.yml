@@ -1,0 +1,40 @@
+# Listed alphabetically by family name. `id` is used by publications and projects.
+- id: demirel
+  name: Berkay Demirel
+  short: B. Demirel
+  initials: BD
+  linkedin: https://www.linkedin.com/in/berkaydemirel/
+  linkedin_label: linkedin.com/in/berkaydemirel
+  note: Co-author of the lab's machine learning paper on mobile-controlled handover (IEEE 5G World Forum, 2021).
+
+- id: griffin
+  name: Antwan Griffin
+  short: A. Griffin
+  initials: AG
+  linkedin: https://www.linkedin.com/in/antwanmgriffin/
+  linkedin_label: linkedin.com/in/antwanmgriffin
+  note: Collaborator on Spenditure, the AI-assisted FinOps platform for Google Cloud.
+
+- id: oliver
+  name: Miquel Oliver
+  short: M. Oliver
+  initials: MO
+  linkedin: https://www.linkedin.com/in/miqueloliver/
+  linkedin_label: linkedin.com/in/miqueloliver
+  note: Co-author on 4 papers, 2019–2021, from the machine learning handover paper to CoNTe and the Globecom and WF-IoT papers on decentralized networks.
+
+- id: platt
+  name: Steven Platt
+  short: S. Platt
+  initials: SP
+  linkedin: https://www.linkedin.com/in/telecomsteve/
+  linkedin_label: linkedin.com/in/telecomsteve
+  note: Author on all 5 papers, 2018–2021, project lead for IEEE P2677.11, and builder of the lab's AI products, Spenditure and Yoptio.
+
+- id: sanabria-russo
+  name: Luis Sanabria-Russo
+  short: L. Sanabria-Russo
+  initials: LS
+  linkedin: https://www.linkedin.com/in/sanabriarusso/
+  linkedin_label: linkedin.com/in/sanabriarusso
+  note: "Co-author of CoNTe: A Core Network Temporal Blockchain for 5G (Sensors, 2020)."

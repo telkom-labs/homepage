@@ -1,0 +1,86 @@
+---
+layout: default
+---
+{%- assign pubs = site.publications | sort: "year" | reverse -%}
+<div class="wrap page">
+  {% include page-head.html eyebrow=page.eyebrow title=page.title intro=page.intro %}
+
+  <div class="research">
+    <aside class="filters" data-filters hidden aria-label="Filter publications">
+      <fieldset>
+        <legend>Type</legend>
+        {%- assign groups = pubs | group_by: "type" %}
+        {%- for g in groups %}
+        <label><input type="checkbox" name="type" value="{{ g.name }}"> {{ g.name }} <b>{{ g.size }}</b></label>
+        {%- endfor %}
+      </fieldset>
+      <fieldset>
+        <legend>Topic</legend>
+        {%- assign groups = pubs | group_by: "topic" %}
+        {%- for g in groups %}
+        <label><input type="checkbox" name="topic" value="{{ g.name }}"> {{ g.name }} <b>{{ g.size }}</b></label>
+        {%- endfor %}
+      </fieldset>
+      <fieldset>
+        <legend>Collaborator</legend>
+        {%- for c in site.data.collaborators %}
+          {%- assign n = pubs | where_exp: "p", "p.authors contains c.id" | size %}
+          {%- if n > 0 %}
+        <label><input type="checkbox" name="authors" value="{{ c.id }}"> {{ c.short }} <b>{{ n }}</b></label>
+          {%- endif %}
+        {%- endfor %}
+      </fieldset>
+    </aside>
+
+    <div class="pubs">
+      <div class="pubs-bar"><span data-count>{{ pubs.size }} of {{ pubs.size }} shown</span><a href="{{ '/publications.bib' | relative_url }}">publications.bib</a></div>
+      <ol class="pub-list">
+        {%- for p in pubs %}
+        <li data-type="{{ p.type }}" data-topic="{{ p.topic }}" data-authors="{{ p.authors | join: '|' }}">
+          <span class="year">{{ p.year }}</span>
+          <div>
+            <a class="item-title" href="{{ p.url | relative_url }}">{{ p.title }}</a>
+            <p class="authors">{% include names.html ids=p.authors %}</p>
+            <p class="venue">{{ p.venue }}{% if p.pages %}, {{ p.pages }}{% endif %}</p>
+            <p class="meta"><span class="chip">{{ p.type }}</span><span class="chip">{{ p.topic }}</span><a href="{{ p.link }}">{{ p.link_label }}</a><a href="{{ p.url | relative_url }}#cite">BibTeX</a></p>
+          </div>
+        </li>
+        {%- endfor %}
+      </ol>
+    </div>
+
+    <aside class="standards rule">
+      <h2>Standards development</h2>
+      <ul>
+        {%- for s in site.data.standards %}
+        <li><strong>{{ s.id }}</strong><span>{{ s.summary }} {{ s.role }}, {{ s.years }}.</span></li>
+        {%- endfor %}
+      </ul>
+    </aside>
+  </div>
+</div>
+
+<script>
+  // Optional filters: the full list shows without JavaScript.
+  (function () {
+    var box = document.querySelector('[data-filters]');
+    if (!box) return;
+    box.hidden = false;
+    var items = Array.prototype.slice.call(document.querySelectorAll('.pub-list li'));
+    var count = document.querySelector('[data-count]');
+    box.addEventListener('change', function () {
+      var picked = {};
+      box.querySelectorAll('input:checked').forEach(function (i) { (picked[i.name] = picked[i.name] || []).push(i.value); });
+      var shown = 0;
+      items.forEach(function (li) {
+        var ok = Object.keys(picked).every(function (k) {
+          var have = (li.dataset[k] || '').split('|');
+          return picked[k].some(function (v) { return have.indexOf(v) > -1; });
+        });
+        li.hidden = !ok;
+        if (ok) shown++;
+      });
+      count.textContent = shown + ' of ' + items.length + ' shown';
+    });
+  })();
+</script>

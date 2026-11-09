@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="108 205 800 580" width="800" height="580" role="img" aria-labelledby="logo-title" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+  <!-- One-color line art. Strokes and dots use currentColor: inline this file and set `color` in CSS to recolor it.
+       Loaded through <img> it renders black. -->
+  <title id="logo-title">Research lab logo</title>
+  <path d="M722 688H760C835 688 897 625 897 545C897 468 835 398 757 393C745 300 668 218 570 218C492 218 425 262 390 330C340 305 262 325 232 405C227 418 225 428 224 436C157 455 118 505 118 565C118 635 170 688 245 688H490C530 688 560 672 585 650"/>
+  <path d="M383 598C325 602 280 568 280 518C280 472 312 446 350 440C358 410 385 392 420 398"/>
+  <path d="M418 455C418 405 450 365 505 358C540 354 566 372 578 388"/>
+  <path d="M485 528V486C490 440 540 386 612 384C680 384 722 428 722 480C722 520 698 540 664 548L626 562"/>
+  <path d="M715 478C750 495 768 530 760 565C754 595 735 608 715 614"/>
+  <path d="M420 462C485 466 550 490 600 524C625 542 640 560 660 570C690 582 730 570 748 553"/>
+  <path d="M620 455C618 515 575 565 512 586"/>
+  <path d="M520 655C512 642 500 640 480 646C440 652 405 628 403 592C402 562 420 545 452 535C490 526 545 522 592 520"/>
+  <path d="M590 662C600 690 640 695 678 682C712 668 724 640 720 612C716 588 690 580 665 584C640 588 615 600 600 622"/>
+  <path d="M640 622L588 632"/>
+  <path d="M420 462L348 525"/>
+  <path d="M553 686L598 748C606 762 620 768 632 764C642 760 640 752 636 745L592 662"/>
+  <g fill="currentColor" stroke="none">
+    <circle cx="348" cy="525" r="16"/>
+    <circle cx="420" cy="462" r="16"/>
+    <circle cx="620" cy="455" r="16"/>
+    <circle cx="510" cy="586" r="16"/>
+    <circle cx="640" cy="622" r="16"/>
+  </g>
+</svg>

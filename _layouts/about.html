@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<div class="wrap page">
+  {% include page-head.html eyebrow=page.eyebrow title=page.heading intro=page.intro %}
+
+  <section class="collab" id="collaborators">
+    <header class="rule rule-about"><h2>Collaborators</h2><span>{{ site.data.collaborators.size }} people, listed alphabetically</span></header>
+    <ul class="collab-list">
+      {%- for c in site.data.collaborators %}
+      <li>
+        <span class="mono" aria-hidden="true">{{ c.initials }}</span>
+        <div class="who"><strong>{{ c.name }}</strong><a href="{{ c.linkedin }}">{{ c.linkedin_label }}</a></div>
+        <p>{{ c.note }}</p>
+      </li>
+      {%- endfor %}
+    </ul>
+  </section>
+
+  <section class="areas">
+    <h2 class="rule rule-research">Research areas</h2>
+    <ul>
+      {%- for a in site.data.areas %}
+      <li><strong>{{ a.name }}</strong><span>{{ a.detail }}</span></li>
+      {%- endfor %}
+    </ul>
+  </section>
+</div>
