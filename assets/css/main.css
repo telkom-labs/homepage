@@ -76,7 +76,7 @@ h2.rule, .rule h2 { font: 600 16px var(--sans); color: var(--ink); }
 /* ---------- header: stays at the top while the page scrolls ---------- */
 .site-header { position: sticky; top: 0; z-index: 20; background: var(--paper); border-bottom: 1px solid var(--rule); }
 .header-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: var(--header); }
-.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font: 600 16px var(--sans); }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font: 400 16px var(--sans); }
 .brand img { display: block; width: 52px; height: auto; }
 .nav { display: flex; gap: 34px; font: 500 13.5px var(--sans); }
 .nav a, .menu nav a { color: var(--text); text-decoration: none; }
