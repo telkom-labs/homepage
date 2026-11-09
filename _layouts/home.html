@@ -4,10 +4,12 @@ layout: default
 {%- assign pubs = site.publications | sort: "year" | reverse -%}
 {%- assign products = site.projects | sort: "order" -%}
 <section class="hero">
-  <div class="hero-net" aria-hidden="true">{% include network.svg %}</div>
-  <div class="wrap hero-copy">
-    <h1>{{ page.headline }}</h1>
-    <p>{{ page.lede }}</p>
+  <div class="wrap hero-inner">
+    <div class="hero-net" aria-hidden="true">{% include network.svg %}</div>
+    <div class="hero-copy">
+      <h1>{{ page.headline }}</h1>
+      <p>{{ page.lede }}</p>
+    </div>
   </div>
 </section>
 
