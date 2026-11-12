@@ -33,7 +33,7 @@ layout: default
     </div>
     <aside class="project-side">
       <dl>
-        <div><dt>Status</dt><dd>{{ page.status }}{% if page.since %}{% if page.status == 'Live' %} since{% else %}, launched{% endif %} {{ page.since }}{% endif %}</dd></div>
+        <div><dt>Status</dt><dd>{{ page.status }}{% if page.since %} since {{ page.since }}{% endif %}</dd></div>
         <div><dt>Platform</dt><dd>{{ page.platform }}</dd></div>
         <div><dt>Team</dt><dd>
           {%- for id in page.team %}
