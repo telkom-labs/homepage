@@ -7,7 +7,7 @@
 
 # Telkom Labs
 
-Applied AI for Internet infrastructure.
+Applied Research for Internet infrastructure.
 
 **Live site:** https://telkomlabs.org
 
