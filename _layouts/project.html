@@ -4,9 +4,11 @@ layout: default
 <div class="wrap page">
   <header class="page-head">
     <p class="eyebrow"><a href="{{ '/projects/' | relative_url }}">Projects</a> / Products</p>
-    <div class="title-row"><h1>{{ page.title }}</h1><span class="chip y">{{ page.status }}</span></div>
+    <div class="title-row"><h1>{{ page.title }}</h1><span class="chip{% if page.status == 'Live' %} y{% endif %}">{{ page.status }}</span></div>
     <p class="intro">{{ page.lede }}</p>
+    {%- if page.link %}
     <p class="out-link"><a href="{{ page.link }}">{{ page.link_label }} →</a></p>
+    {%- endif %}
   </header>
 
   <div class="project">
@@ -31,7 +33,7 @@ layout: default
     </div>
     <aside class="project-side">
       <dl>
-        <div><dt>Status</dt><dd>{{ page.status }}{% if page.since %} since {{ page.since }}{% endif %}</dd></div>
+        <div><dt>Status</dt><dd>{{ page.status }}{% if page.since %}{% if page.status == 'Live' %} since{% else %}, launched{% endif %} {{ page.since }}{% endif %}</dd></div>
         <div><dt>Platform</dt><dd>{{ page.platform }}</dd></div>
         <div><dt>Team</dt><dd>
           {%- for id in page.team %}

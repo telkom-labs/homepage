@@ -1,7 +1,7 @@
 ---
 title: Spenditure
-order: 1
-status: Live
+order: 2
+status: Retired
 since: Feb 2024
 summary: "AI-assisted FinOps for Google Cloud: an answer engine for billing questions, live spend views and a 3D Cloud Map of deployments and their costs."
 home_summary: AI answer engine for Google Cloud billing, built on MCP tools and Gemini, beside a 3D Cloud Map of deployments and costs.
@@ -9,8 +9,6 @@ lede: AI-assisted FinOps for Google Cloud. Teams see spend and infrastructure in
 tags: [AI agents, MCP, Gemini, Google Cloud]
 team: [griffin, platt]
 platform: Google Cloud
-link: https://spenditure.com
-link_label: spenditure.com
 features:
   - name: Answer engine
     text: Gemini-powered chat with in-process MCP tools resolves billing questions on its own.
