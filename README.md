@@ -1,4 +1,4 @@
-<p align="center">
+<p align="left">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/images/logo-dark.png">
     <img src="assets/images/logo.png" alt="Telkom Labs logo" width="160">
