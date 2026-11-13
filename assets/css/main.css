@@ -206,10 +206,7 @@ pre { margin: 0; padding: 18px 20px; overflow-x: auto; white-space: pre-wrap; ov
 .card.big h3 a { color: var(--blue); }
 .card h3 a:hover { text-decoration: underline; }
 .card-top { display: flex; align-items: center; gap: 10px; font-size: 12px; }
-.tags { font-size: 12px; }
-/* repo path pinned to the bottom of each open source tile, so the paths line up across a row */
-.repo { margin-top: auto; font: 12px var(--mono); overflow-wrap: anywhere; }
-@media (max-width: 900px) { .cards.four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.tags { font-size: 12px; }@media (max-width: 900px) { .cards.four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .cards.two, .cards.four { grid-template-columns: minmax(0, 1fr); } }
 
 .project { display: grid; grid-template-columns: minmax(0, 1fr) 16em; gap: 56px; align-items: start; }
