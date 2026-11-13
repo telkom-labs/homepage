@@ -1,7 +1,6 @@
 ---
 title: "CoNTe: A Core Network Temporal Blockchain for 5G"
 short: CoNTe
-project_summary: A temporal blockchain packaged as a 5G core network function.
 year: 2020
 type: Journal
 topic: Decentralized networks

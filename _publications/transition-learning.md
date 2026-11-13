@@ -1,7 +1,6 @@
 ---
 title: Using Transition Learning to Enhance Mobile-Controlled Handover In Decentralized Future Networks
 short: Transition learning
-project_summary: Device-side learning for mobile handover.
 year: 2021
 type: Conference
 topic: Machine learning

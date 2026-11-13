@@ -1,0 +1,24 @@
+# Open source repositories on the Telkom Labs GitHub account, in display order.
+- name: Spectrum Protocol
+  repo: telkom-labs/spectrum-protocol
+  language: Python
+  license: MIT
+  summary: A research prototype that records wireless spectrum-sharing agreements on a blockchain, with a web dashboard and an API for OpenWRT devices.
+
+- name: Dyagram
+  repo: telkom-labs/dyagram
+  language: Python
+  license: MIT
+  summary: A command-line tool that scans a Google Cloud project and renders its architecture as PNG and SVG diagrams.
+
+- name: 5G Mobility Simulator
+  repo: telkom-labs/5G-mobility-simulator
+  language: Python
+  license: MIT
+  summary: A Python simulator of 5G device handover on a city grid, used for the lab's paper on transition learning.
+
+- name: ResearchEng Portfolio
+  repo: telkom-labs/ResearchEng-Portfolio
+  language: HTML
+  license: MIT
+  summary: A lightweight, responsive portfolio template for research engineers, with a section for publications that most developer templates leave out.

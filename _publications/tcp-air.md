@@ -1,7 +1,6 @@
 ---
 title: A Distributed Ledger-Enabled Interworking Model for the Wireless Air Interface
 short: TCP-Air
-project_summary: Distributed ledgers at the wireless air interface.
 year: 2019
 type: Conference
 topic: Decentralized networks

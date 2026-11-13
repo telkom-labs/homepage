@@ -2,7 +2,6 @@
 layout: default
 ---
 {%- assign products = site.projects | sort: "order" -%}
-{%- assign research = site.publications | where_exp: "p", "p.project_summary" | sort: "year" | reverse -%}
 <div class="wrap page">
   {% include page-head.html eyebrow=page.eyebrow title=page.heading intro=page.intro %}
 
@@ -22,14 +21,14 @@ layout: default
   </section>
 
   <section class="proj-sec">
-    <h2 class="rule rule-research">Research projects</h2>
+    <h2 class="rule rule-projects">Open Source</h2>
     <div class="cards four">
-      {%- for p in research %}
+      {%- for r in site.data.open_source %}
       <article class="card">
-        <p class="card-top"><span class="chip">{{ p.year }}</span></p>
-        <h3><a href="{{ p.url | relative_url }}">{{ p.short }}</a></h3>
-        <p>{{ p.project_summary }}</p>
-        <p class="team">{% include names.html ids=p.authors %}</p>
+        <p class="card-top"><span class="chip">{{ r.language }}</span><span>{{ r.license }} License</span></p>
+        <h3><a href="https://github.com/{{ r.repo }}">{{ r.name }}</a></h3>
+        <p>{{ r.summary }}</p>
+        <p class="repo">github.com/{{ r.repo }}</p>
       </article>
       {%- endfor %}
     </div>

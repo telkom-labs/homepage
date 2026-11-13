@@ -1,7 +1,6 @@
 ---
 title: Towards Blockchain for Decentralized Self-Organizing Wireless Networks
 short: Redes Chain
-project_summary: A blockchain for self-organizing wireless networks, with no cryptocurrency.
 year: 2019
 type: Conference
 topic: Decentralized networks
