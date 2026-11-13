@@ -3,7 +3,6 @@ title: Spenditure
 order: 2
 status: Retired
 summary: "AI-assisted FinOps for Google Cloud: an answer engine for billing questions, live spend views and a 3D Cloud Map of deployments and their costs."
-home_summary: AI answer engine for Google Cloud billing, built on MCP tools and Gemini, beside a 3D Cloud Map of deployments and costs.
 lede: AI-assisted FinOps for Google Cloud. Teams see spend and infrastructure in one place and ask billing questions in plain language.
 tags: [AI agents, MCP, Gemini, Google Cloud]
 team: [griffin, platt]

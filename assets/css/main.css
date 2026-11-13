@@ -141,6 +141,8 @@ h2.rule, .rule h2 { font: 600 16px var(--sans); color: var(--ink); }
 .block header a { font-size: 12.5px; text-decoration: none; white-space: nowrap; }
 .block ul { display: flex; flex-direction: column; gap: 22px; }
 .block li { display: flex; flex-direction: column; gap: 4px; }
+/* keep the license badge at its own width rather than stretching across the column */
+.block li .chip { align-self: flex-start; margin-top: 4px; }
 @media (max-width: 760px) { .home-blocks { grid-template-columns: 1fr; } }
 
 /* ---------- research: filters, list, standards ---------- */

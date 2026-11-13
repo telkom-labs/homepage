@@ -3,7 +3,6 @@ title: Yoptio
 order: 1
 status: Live
 summary: "An RSS reader with AI built in: article summaries, narration and a personalized daily podcast built from each reader's own feeds."
-home_summary: AI reader that summarizes and narrates articles and builds a personalized daily podcast with Gemini.
 lede: An RSS reader with AI built in. Yoptio summarizes and narrates articles, and builds a personalized daily podcast from each reader's activity and feeds.
 tags: [Generative AI, Vertex AI, Gemini]
 team: [platt]

@@ -2,7 +2,6 @@
 layout: default
 ---
 {%- assign pubs = site.publications | sort: "year" | reverse -%}
-{%- assign products = site.projects | sort: "order" -%}
 <section class="hero">
   <div class="wrap hero-inner">
     <div class="hero-net" aria-hidden="true">{% include network.svg %}</div>
@@ -28,11 +27,12 @@ layout: default
   <section class="block rule rule-projects">
     <header><h2>Projects</h2><a href="{{ '/projects/' | relative_url }}">All projects →</a></header>
     <ul>
-      {%- for p in products %}
+      {%- for id in page.home_repos %}
+      {%- assign r = site.data.open_source | where: "repo", id | first %}
       <li>
-        <a class="item-title" href="{{ p.url | relative_url }}">{{ p.title }}</a>
-        <span>{{ p.home_summary }}</span>
-        <span class="team">{% include names.html ids=p.team %}</span>
+        <a class="item-title" href="https://github.com/{{ r.repo }}">{{ r.name }}</a>
+        <span>{{ r.summary }}</span>
+        <span class="chip">{{ r.license }} License</span>
       </li>
       {%- endfor %}
     </ul>
