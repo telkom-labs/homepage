@@ -1,57 +1,30 @@
 ---
 layout: default
 ---
-{%- assign pubs = site.publications | sort: "year" | reverse -%}
-{%- assign products = site.projects | sort: "order" -%}
-<div class="wrap docs">
-  <article class="doc">
-    {% include page-head.html parent="Research" parent_url="/research/" eyebrow=page.topic title=page.short intro=page.title %}
-    <div class="abstract">{{ content }}</div>
+<article class="wrap docs">
+  {% include page-head.html parent="Research" parent_url="/research/" eyebrow=page.topic title=page.short intro=page.title %}
+
+  <aside class="docs-side" aria-label="Paper details">
     <dl class="facts">
       <div><dt>Venue</dt><dd>{{ page.venue_short }}</dd></div>
       <div><dt>Year</dt><dd>{{ page.year }}</dd></div>
       {%- if page.pages %}
       <div><dt>{{ page.pages_label | default: "Pages" }}</dt><dd>{{ page.pages }}</dd></div>
       {%- endif %}
-      <div><dt>Authors</dt><dd>{% include names.html ids=page.authors %}</dd></div>
+      <div><dt>Authors</dt><dd>
+        {%- for id in page.authors %}
+        {%- assign person = site.data.collaborators | where: "id", id | first %}
+        {{ person.short }}{% unless forloop.last %}<br>{% endunless %}
+        {%- endfor %}
+      </dd></div>
     </dl>
+  </aside>
+
+  <div class="doc">
+    <div class="abstract">{{ content }}</div>
     <h2 id="read">Read the paper</h2>
     <p><a href="{{ page.link }}">{{ page.link_label }}: {{ page.link | remove: "https://" }}</a></p>
     <h2 id="cite">Cite</h2>
     <pre><code>{{ page.bibtex | strip | xml_escape }}</code></pre>
-  </article>
-
-  <aside class="docs-side" aria-label="Research navigation">
-    <div>
-      <h2><i class="sq sq-research"></i>Research</h2>
-      <ul>
-        {%- for p in pubs %}
-        <li><a href="{{ p.url | relative_url }}"{% if p.url == page.url %} aria-current="page"{% endif %}>{{ p.short }}</a></li>
-        {%- endfor %}
-      </ul>
-    </div>
-    <div>
-      <h2><i class="sq sq-projects"></i>Projects</h2>
-      <ul>
-        {%- for p in products %}
-        <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
-        {%- endfor %}
-      </ul>
-    </div>
-    <div>
-      <h2><i class="sq sq-research"></i>Standards</h2>
-      <ul>
-        {%- for s in site.data.standards %}
-        <li><a href="{{ '/research/' | relative_url }}">{{ s.id }}</a></li>
-        {%- endfor %}
-      </ul>
-    </div>
-    <div>
-      <h2><i class="sq sq-about"></i>About</h2>
-      <ul>
-        <li><a href="{{ '/about/' | relative_url }}">Lab overview</a></li>
-        <li><a href="{{ '/about/' | relative_url }}#collaborators">Collaborators ({{ site.data.collaborators.size }})</a></li>
-      </ul>
-    </div>
-  </aside>
-</div>
+  </div>
+</article>
