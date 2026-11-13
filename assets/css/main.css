@@ -175,8 +175,8 @@ h2.rule, .rule h2 { font: 600 16px var(--sans); color: var(--ink); }
 }
 
 /* ---------- paper pages: documentation layout ---------- */
-/* paper details sit in the left column beside the title and body; the 1fr row soaks up any extra height */
-.docs { display: grid; grid-template-columns: 13em minmax(0, 1fr); grid-template-rows: auto 1fr; grid-template-areas: "side head" "side doc"; gap: 22px 56px; align-items: start; padding-block: 56px 80px; }
+/* title spans the full width, as on the research index; paper details sit in the left column beside the body */
+.docs { display: grid; grid-template-columns: 13em minmax(0, 1fr); grid-template-areas: "head head" "side doc"; gap: 48px 56px; align-items: start; padding-block: 56px 80px; }
 .docs > .page-head { grid-area: head; }
 .doc { grid-area: doc; display: flex; flex-direction: column; gap: 22px; max-width: 46em; min-width: 0; }
 .doc h2 { padding-top: 18px; border-top: 1px solid var(--rule); font: 600 17px var(--sans); color: var(--ink); }
@@ -188,7 +188,7 @@ pre { margin: 0; padding: 18px 20px; overflow-x: auto; white-space: pre-wrap; ov
 .docs-side { grid-area: side; position: sticky; top: calc(var(--header) + 24px); min-width: 0; font-size: 14px; }
 @media (max-width: 760px) {
   /* single column: title, then the details, then the abstract */
-  .docs { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-template-areas: "head" "side" "doc"; gap: 28px; }
+  .docs { grid-template-columns: minmax(0, 1fr); grid-template-areas: "head" "side" "doc"; gap: 28px; }
   .docs-side { position: static; padding-block: 18px; border-block: 1px solid var(--rule); }
   .facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 20px; }
 }
