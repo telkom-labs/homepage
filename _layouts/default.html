@@ -3,12 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="preload" href="{{ '/assets/fonts/geist-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  <meta name="theme-color" content="#f4eee3">
+  <script>
+    // Before first paint: note that scripts run, and which way the previous page asked this one to slide in.
+    (function (d) { var c = " js"; try { if (sessionStorage.getItem("pivot-dir") === "back") c += " dir-back"; sessionStorage.removeItem("pivot-dir"); } catch (e) {} d.className += c; })(document.documentElement);
+  </script>
+  <link rel="preload" href="{{ '/assets/fonts/selawik-light.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ '/assets/fonts/selawik-semilight.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   <link rel="icon" href="{{ '/assets/images/logo.svg' | relative_url }}" type="image/svg+xml">
   {% seo %}
+  <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
 </head>
-<body>
+<body class="s-{{ page.section | default: 'lab' }}{% if page.layout == 'home' %} is-home{% endif %}">
   <a class="skip" href="#main">Skip to content</a>
   {% include header.html %}
   <main id="main">

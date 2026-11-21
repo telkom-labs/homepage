@@ -1,30 +1,39 @@
 ---
 layout: default
 ---
-<article class="wrap docs">
-  {% include page-head.html parent="Research" parent_url="/research/" eyebrow=page.topic title=page.short intro=page.title %}
+<p class="ghost" aria-hidden="true">{{ page.short | downcase }}</p>
+<article class="detail">
+  <header class="intro-block">
+    <p class="caps"><a href="{{ '/research/' | relative_url }}">research</a> · {{ page.topic }}</p>
+    <h1 class="page-title">{{ page.short | downcase }}</h1>
+    <p class="intro">{{ page.title }}</p>
+  </header>
 
-  <aside class="docs-side" aria-label="Paper details">
-    <dl class="facts">
-      <div><dt>Venue</dt><dd>{{ page.venue_short }}</dd></div>
-      <div><dt>Year</dt><dd>{{ page.year }}</dd></div>
-      {%- if page.pages %}
-      <div><dt>{{ page.pages_label | default: "Pages" }}</dt><dd>{{ page.pages }}</dd></div>
-      {%- endif %}
-      <div><dt>Authors</dt><dd>
-        {%- for id in page.authors %}
-        {%- assign person = site.data.collaborators | where: "id", id | first %}
-        {{ person.short }}{% unless forloop.last %}<br>{% endunless %}
-        {%- endfor %}
-      </dd></div>
-    </dl>
-  </aside>
+  <dl class="specs">
+    <div><dt>year</dt><dd class="spec-num">{{ page.year }}</dd></div>
+    <div><dt>type</dt><dd>{{ page.type | downcase }}</dd></div>
+    <div><dt>venue</dt><dd>{{ page.venue_short }}</dd></div>
+    {%- if page.pages %}
+    <div><dt>{{ page.pages_label | default: "Pages" | downcase }}</dt><dd>{{ page.pages }}</dd></div>
+    {%- endif %}
+    <div><dt>authors</dt><dd>
+      {%- for id in page.authors %}
+      {%- assign person = site.data.collaborators | where: "id", id | first %}
+      {{ person.short }}{% unless forloop.last %}<br>{% endunless %}
+      {%- endfor %}
+    </dd></div>
+  </dl>
 
-  <div class="doc">
+  <section class="sec" aria-labelledby="abstract">
+    <h2 class="sec-head" id="abstract">abstract</h2>
     <div class="abstract">{{ content }}</div>
-    <h2 id="read">Read the paper</h2>
-    <p><a href="{{ page.link }}">{{ page.link_label }}: {{ page.link | remove: "https://" }}</a></p>
-    <h2 id="cite">Cite</h2>
-    <pre><code>{{ page.bibtex | strip | xml_escape }}</code></pre>
-  </div>
+  </section>
+  <section class="sec" aria-labelledby="read">
+    <h2 class="sec-head" id="read">read the paper</h2>
+    <p><a class="go" href="{{ page.link }}">{{ page.link_label | downcase }} · {{ page.link | remove: "https://" | truncate: 52 }} {% include icon.html name="chevron" %}</a></p>
+  </section>
+  <section class="sec" aria-labelledby="cite">
+    <h2 class="sec-head" id="cite">cite <button class="text-btn" type="button" data-copy="bibtex" hidden>{% include icon.html name="copy" %}<span data-copy-label>copy bibtex</span></button></h2>
+    <pre id="bibtex"><code>{{ page.bibtex | strip | xml_escape }}</code></pre>
+  </section>
 </article>

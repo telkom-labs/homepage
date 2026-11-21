@@ -1,28 +1,38 @@
 ---
 layout: default
 ---
-<div class="wrap page">
-  {% include page-head.html eyebrow=page.eyebrow title=page.heading intro=page.intro %}
+<p class="ghost" aria-hidden="true">{{ page.eyebrow | downcase }}</p>
 
-  <section class="collab" id="collaborators">
-    <header class="rule rule-about"><h2>Collaborators</h2><span>{{ site.data.collaborators.size }} people, listed alphabetically</span></header>
-    <ul class="collab-list">
-      {%- for c in site.data.collaborators %}
-      <li>
-        <span class="mono" aria-hidden="true">{{ c.initials }}</span>
-        <div class="who"><strong>{{ c.name }}</strong><a href="{{ c.linkedin }}">{{ c.linkedin_label }}</a></div>
+<section class="intro-block">
+  <h1 class="page-title">{{ page.heading | downcase }}</h1>
+  <p class="intro">{{ page.intro }}</p>
+</section>
+
+<section class="sec" id="collaborators" aria-labelledby="collab-title">
+  <h2 class="sec-head" id="collab-title">collaborators <span class="sec-note">{{ site.data.collaborators.size }} people, listed alphabetically</span></h2>
+  <ul class="friends">
+    {%- for c in site.data.collaborators %}
+    <li>
+      <span class="friend-art" aria-hidden="true">{{ c.initials | downcase }}</span>
+      <div>
+        <span class="friend-name">{{ c.name | downcase }}</span>
+        <a class="small" href="{{ c.linkedin }}">{{ c.linkedin_label }}</a>
         <p>{{ c.note }}</p>
-      </li>
-      {%- endfor %}
-    </ul>
-  </section>
+      </div>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
 
-  <section class="areas">
-    <h2 class="rule rule-research">Research areas</h2>
-    <ul>
-      {%- for a in site.data.areas %}
-      <li><strong>{{ a.name }}</strong><span>{{ a.detail }}</span></li>
-      {%- endfor %}
-    </ul>
-  </section>
-</div>
+<section class="sec" id="areas" aria-labelledby="areas-title">
+  <h2 class="sec-head" id="areas-title">research areas</h2>
+  <ol class="columns three">
+    {%- for a in site.data.areas %}
+    <li>
+      <span class="huge-num" aria-hidden="true">0{{ forloop.index }}</span>
+      <span class="big-word">{{ a.name | downcase }}</span>
+      <span class="caps">{{ a.detail }}</span>
+    </li>
+    {%- endfor %}
+  </ol>
+</section>

@@ -1,86 +1,81 @@
 ---
 layout: default
 ---
+{%- comment -%}
+  The Zune collection view: one column of lowercase facets narrows the list beside it. Within a facet, picks are
+  alternatives; across facets, every facet must match. Without JavaScript the facets stay hidden.
+{%- endcomment -%}
 {%- assign pubs = site.publications | sort: "year" | reverse -%}
-<div class="wrap page">
-  {% include page-head.html eyebrow=page.eyebrow title=page.title intro=page.intro %}
+<p class="ghost" aria-hidden="true">{{ page.eyebrow | downcase }}</p>
 
-  <div class="research">
-    <aside class="filters" data-filters hidden aria-label="Filter publications">
-      <fieldset>
-        <legend>Type</legend>
-        {%- assign groups = pubs | group_by: "type" %}
+<section class="intro-block">
+  <h1 class="page-title">{{ page.title | downcase }}</h1>
+  <p class="intro">{{ page.intro }}</p>
+</section>
+
+<div class="collection">
+  <div class="facets" data-facets hidden>
+    {%- assign groups = pubs | group_by: "type" %}
+    <section class="facet" data-facet="type" aria-labelledby="f-type">
+      <h2 class="col-head" id="f-type">type</h2>
+      <ul>
+        <li><button type="button" data-all aria-pressed="true">all</button></li>
         {%- for g in groups %}
-        <label><input type="checkbox" name="type" value="{{ g.name }}"> {{ g.name }} <b>{{ g.size }}</b></label>
+        <li><button type="button" data-value="{{ g.name }}" aria-pressed="false">{{ g.name | downcase }} <span>{{ g.size }}</span></button></li>
         {%- endfor %}
-      </fieldset>
-      <fieldset>
-        <legend>Topic</legend>
-        {%- assign groups = pubs | group_by: "topic" %}
+      </ul>
+    </section>
+    {%- assign groups = pubs | group_by: "topic" %}
+    <section class="facet" data-facet="topic" aria-labelledby="f-topic">
+      <h2 class="col-head" id="f-topic">topic</h2>
+      <ul>
+        <li><button type="button" data-all aria-pressed="true">all</button></li>
         {%- for g in groups %}
-        <label><input type="checkbox" name="topic" value="{{ g.name }}"> {{ g.name }} <b>{{ g.size }}</b></label>
+        <li><button type="button" data-value="{{ g.name }}" aria-pressed="false">{{ g.name | downcase }} <span>{{ g.size }}</span></button></li>
         {%- endfor %}
-      </fieldset>
-      <fieldset>
-        <legend>Collaborator</legend>
+      </ul>
+    </section>
+    <section class="facet" data-facet="authors" aria-labelledby="f-authors">
+      <h2 class="col-head" id="f-authors">collaborator</h2>
+      <ul>
+        <li><button type="button" data-all aria-pressed="true">all</button></li>
         {%- for c in site.data.collaborators %}
           {%- assign n = pubs | where_exp: "p", "p.authors contains c.id" | size %}
           {%- if n > 0 %}
-        <label><input type="checkbox" name="authors" value="{{ c.id }}"> {{ c.short }} <b>{{ n }}</b></label>
+        <li><button type="button" data-value="{{ c.id }}" aria-pressed="false">{{ c.name | downcase }} <span>{{ n }}</span></button></li>
           {%- endif %}
         {%- endfor %}
-      </fieldset>
-    </aside>
-
-    <div class="pubs">
-      <div class="pubs-bar"><span data-count>{{ pubs.size }} of {{ pubs.size }} shown</span><a href="{{ '/publications.bib' | relative_url }}">publications.bib</a></div>
-      <ol class="pub-list">
-        {%- for p in pubs %}
-        <li data-type="{{ p.type }}" data-topic="{{ p.topic }}" data-authors="{{ p.authors | join: '|' }}">
-          <span class="year">{{ p.year }}</span>
-          <div>
-            <a class="item-title" href="{{ p.url | relative_url }}">{{ p.title }}</a>
-            <p class="authors">{% include names.html ids=p.authors %}</p>
-            <p class="venue">{{ p.venue }}{% if p.pages %}, {{ p.pages }}{% endif %}</p>
-            <p class="meta"><span class="chip">{{ p.type }}</span><span class="chip">{{ p.topic }}</span><a href="{{ p.link }}">{{ p.link_label }}</a><a href="{{ p.url | relative_url }}#cite">BibTeX</a></p>
-          </div>
-        </li>
-        {%- endfor %}
-      </ol>
-    </div>
-
-    <aside class="standards rule">
-      <h2>Standards development</h2>
-      <ul>
-        {%- for s in site.data.standards %}
-        <li><strong>{{ s.id }}</strong><span>{{ s.summary }} {{ s.role }}, {{ s.years }}.</span></li>
-        {%- endfor %}
       </ul>
-    </aside>
+    </section>
   </div>
+
+  <section class="papers" aria-labelledby="papers-title">
+    <h2 class="col-head" id="papers-title">papers <span data-count aria-live="polite">{{ pubs.size }} of {{ pubs.size }}</span> <a href="{{ '/publications.bib' | relative_url }}">publications.bib</a></h2>
+    <ol class="tracks">
+      {%- for p in pubs %}
+      <li data-type="{{ p.type }}" data-topic="{{ p.topic }}" data-authors="{{ p.authors | join: '|' }}">
+        <span class="t-year">{{ p.year }}</span>
+        <div class="t-body">
+          <a class="t-title" href="{{ p.url | relative_url }}">{{ p.title }}</a>
+          <span class="t-sub">{% include names.html ids=p.authors %} · {{ p.venue }}{% if p.pages %}, {{ p.pages }}{% endif %}</span>
+          <span class="t-meta"><span class="caps">{{ p.type }} · {{ p.topic }}</span><a href="{{ p.link }}">{{ p.link_label }}</a><a href="{{ p.url | relative_url }}#cite">BibTeX</a></span>
+        </div>
+      </li>
+      {%- endfor %}
+    </ol>
+    <p class="none" data-empty hidden>nothing matches. <button type="button" data-reset>show all papers</button></p>
+  </section>
 </div>
 
-<script>
-  // Optional filters: the full list shows without JavaScript.
-  (function () {
-    var box = document.querySelector('[data-filters]');
-    if (!box) return;
-    box.hidden = false;
-    var items = Array.prototype.slice.call(document.querySelectorAll('.pub-list li'));
-    var count = document.querySelector('[data-count]');
-    box.addEventListener('change', function () {
-      var picked = {};
-      box.querySelectorAll('input:checked').forEach(function (i) { (picked[i.name] = picked[i.name] || []).push(i.value); });
-      var shown = 0;
-      items.forEach(function (li) {
-        var ok = Object.keys(picked).every(function (k) {
-          var have = (li.dataset[k] || '').split('|');
-          return picked[k].some(function (v) { return have.indexOf(v) > -1; });
-        });
-        li.hidden = !ok;
-        if (ok) shown++;
-      });
-      count.textContent = shown + ' of ' + items.length + ' shown';
-    });
-  })();
-</script>
+<section class="sec" id="standards" aria-labelledby="standards-title">
+  <h2 class="sec-head" id="standards-title">standards</h2>
+  <ul class="columns">
+    {%- for s in site.data.standards %}
+    <li>
+      <span class="big-word">{{ s.id }}</span>
+      <span class="caps">{{ s.role }} · {{ s.years }}</span>
+      <p>{{ s.summary }}</p>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>

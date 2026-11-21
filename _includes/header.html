@@ -1,13 +1,27 @@
-<header class="site-header">
-  <div class="wrap header-bar">
-    <a class="brand" href="{{ '/' | relative_url }}">
-      <img src="{{ '/assets/images/logo.svg' | relative_url }}" alt="" width="52" height="38">
-      <span>Telkom Labs</span>
-    </a>
-    <nav class="nav" aria-label="Main">{% include nav-links.html %}</nav>
-    <details class="menu">
-      <summary aria-label="Menu"><span class="menu-icon"></span></summary>
-      <nav aria-label="Main">{% include nav-links.html %}</nav>
-    </details>
+{%- comment -%}
+  Zune-style navigation: the site's sections in large lowercase type, the current one in ink with an ochre underline.
+  data-pos gives each page its place in reading order (lab 0, research 100 and its papers 101+, projects 200,
+  about 300) so assets/js/main.js can slide pages in the direction you move: forward from the right, back from the left.
+{%- endcomment -%}
+{%- assign sec = page.section -%}
+{%- if page.layout == "home" %}{% assign sec = "lab" %}{% endif -%}
+{%- assign pubs = site.publications | sort: "year" | reverse -%}
+{%- assign pos = 0 -%}
+{%- case sec -%}
+{%- when "research" -%}{% assign pos = 100 %}{% for p in pubs %}{% if p.url == page.url %}{% assign pos = 100 | plus: forloop.index %}{% endif %}{% endfor %}
+{%- when "projects" -%}{% assign pos = 200 %}
+{%- when "about" -%}{% assign pos = 300 %}
+{%- endcase -%}
+<header class="head" data-pos="{{ pos }}">
+  <div class="head-bar">
+    <a class="mark" href="{{ '/' | relative_url }}">{% include logo.svg %}<span>telkom labs</span></a>
+    <a class="head-src" href="https://github.com/telkom-labs/homepage">source</a>
   </div>
+  <nav class="pivot" aria-label="Main" data-pivot>
+    {%- assign links = "lab:/:0,research:/research/:100,projects:/projects/:200,about:/about/:300" | split: "," -%}
+    {%- for link in links -%}
+    {%- assign parts = link | split: ":" %}
+    <a href="{{ parts[1] | relative_url }}" data-pos="{{ parts[2] }}"{% if sec == parts[0] %} aria-current="{% if page.url == parts[1] %}page{% else %}true{% endif %}"{% endif %}>{{ parts[0] }}</a>
+    {%- endfor %}
+  </nav>
 </header>

@@ -11,18 +11,18 @@ Applied Research for Internet infrastructure.
 
 **Live site:** https://telkomlabs.org
 
-A static Jekyll site, built and hosted by GitHub Pages from the `main` branch. No JavaScript is needed to read it; the only script is an optional filter on the publications list.
+A static Jekyll site, built and hosted by GitHub Pages from the `main` branch. The design follows Microsoft's Metro style, after the Zune desktop software, set in [Selawik](https://github.com/microsoft/Selawik) (SIL Open Font License). No JavaScript is needed to read it; the one script adds page transitions, the publication filters and BibTeX copying.
 
 ## Edit content
 
 | What | Where |
 |---|---|
 | Publications | `_publications/`, one Markdown file per paper |
-| Projects | `_projects/`, one Markdown file per project |
+| Products | `_projects/`, one Markdown file per product, listed on the Projects page; a product with a `link` links to it, a `Retired` one is greyed out |
 | Books | `_data/books.yml`, shown first on the Projects page |
 | Collaborators | `_data/collaborators.yml` |
 | Standards and research areas | `_data/standards.yml`, `_data/areas.yml` |
-| Styles | `assets/css/main.css` |
+| Styles and script | `assets/css/main.css`, `assets/js/main.js` |
 
 Push to `main` and GitHub Pages rebuilds the site in about a minute.
 

@@ -18,15 +18,16 @@ collections:
   publications:
     output: true
     permalink: /research/:name/
+  # Products are listed on the Projects page only, with no page of their own: a product with its own site links
+  # to it, and a retired one is shown greyed out.
   projects:
-    output: true
-    permalink: /projects/:name/
+    output: false
 
 defaults:
   - scope: { path: "", type: publications }
     values: { layout: paper, section: research }
   - scope: { path: "", type: projects }
-    values: { layout: project, section: projects }
+    values: { layout: null, section: projects }
 
 exclude:
   - README.md

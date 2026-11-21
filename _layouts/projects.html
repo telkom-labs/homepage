@@ -2,56 +2,61 @@
 layout: default
 ---
 {%- assign products = site.projects | sort: "order" -%}
-<div class="wrap page">
-  {% include page-head.html eyebrow=page.eyebrow title=page.heading intro=page.intro %}
+<p class="ghost" aria-hidden="true">{{ page.eyebrow | downcase }}</p>
 
-  <section class="proj-sec">
-    <h2 class="rule rule-projects">Books</h2>
-    {%- for b in site.data.books %}
-    <article class="book">
-      <img class="book-cover" src="{{ b.cover | relative_url }}" alt="" width="{{ b.cover_width }}" height="{{ b.cover_height }}">
-      <div class="book-body">
-        <p class="card-top"><span class="chip{% if b.status == 'Live' %} y{% endif %}">{{ b.status }}</span><span>{{ b.publisher }} · {{ b.year }}</span></p>
-        <h3><a href="{{ b.url }}">{{ b.title }}</a></h3>
-        <p>{{ b.summary }}</p>
-        <ul class="book-points">
-          {%- for point in b.points %}
-          <li><span class="sq sq-projects"></span>{{ point }}</li>
-          {%- endfor %}
-        </ul>
-        <p class="tags">{{ b.tags | join: " · " }}</p>
-        <p class="team">{% include names.html ids=b.authors %}</p>
-        <p class="book-note">{{ b.note }} <a class="out-link" href="{{ b.url }}">{{ b.link_label }}</a></p>
-      </div>
-    </article>
+<section class="intro-block">
+  <h1 class="page-title">{{ page.heading | downcase }}</h1>
+  <p class="intro">{{ page.intro }}</p>
+</section>
+
+<section class="sec sec-books" id="books" aria-labelledby="books-title">
+  <h2 class="sec-head" id="books-title">books</h2>
+  {%- for b in site.data.books %}
+  <article class="album">
+    <img class="album-art" src="{{ b.cover | relative_url }}" alt="" width="{{ b.cover_width }}" height="{{ b.cover_height }}">
+    <div class="album-body">
+      <span class="caps"><span class="dot{% if b.status == 'Live' %} dot-live{% endif %}"></span>{{ b.status }} · {{ b.publisher }} · {{ b.year }}</span>
+      <h3 class="big-title"><a href="{{ b.url }}">{{ b.title | downcase }}</a></h3>
+      <p class="lede">{{ b.summary }}</p>
+      <ol class="numbered">
+        {%- for point in b.points %}
+        <li><span class="n">{{ forloop.index }}</span>{{ point }}</li>
+        {%- endfor %}
+      </ol>
+      <p class="caps">{{ b.tags | join: " · " }}</p>
+      <p class="small">{% include names.html ids=b.authors %} — {{ b.note }} <a href="{{ b.url }}">{{ b.link_label }}</a></p>
+    </div>
+  </article>
+  {%- endfor %}
+</section>
+
+<section class="sec" id="products" aria-labelledby="products-title">
+  <h2 class="sec-head" id="products-title">products</h2>
+  <ul class="columns two">
+    {%- for p in products %}
+    <li class="product">
+      <span class="caps"><span class="dot{% if p.status == 'Live' %} dot-live{% endif %}"></span>{{ p.status }}{% if p.since %} since {{ p.since }}{% endif %}</span>
+      {%- comment %} No product pages here: a product with its own site links to it; a retired one is greyed out. {% endcomment %}
+      <h3 class="big-title{% if p.status == 'Retired' %} is-retired{% endif %}">
+        {%- if p.link %}<a href="{{ p.link }}">{{ p.title | downcase }}</a>{% else %}{{ p.title | downcase }}{% endif -%}
+      </h3>
+      <p>{{ p.summary }}</p>
+      <p class="caps">{{ p.tags | join: " · " }}</p>
+      <p class="small">{% include names.html ids=p.team %}</p>
+    </li>
     {%- endfor %}
-  </section>
+  </ul>
+</section>
 
-  <section class="proj-sec">
-    <h2 class="rule rule-projects">Products</h2>
-    <div class="cards two">
-      {%- for p in products %}
-      <article class="card big">
-        <p class="card-top"><span class="chip{% if p.status == 'Live' %} y{% endif %}">{{ p.status }}</span>{% if p.since %}<span>Since {{ p.since }}</span>{% endif %}</p>
-        <h3><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h3>
-        <p>{{ p.summary }}</p>
-        <p class="tags">{{ p.tags | join: " · " }}</p>
-        <p class="team">{% include names.html ids=p.team %}</p>
-      </article>
-      {%- endfor %}
-    </div>
-  </section>
-
-  <section class="proj-sec">
-    <h2 class="rule rule-projects">Open Source</h2>
-    <div class="cards four">
-      {%- for r in site.data.open_source %}
-      <article class="card">
-        <p class="card-top"><span class="chip">{{ r.language }}</span><span>{{ r.license }} License</span></p>
-        <h3><a href="https://github.com/{{ r.repo }}">{{ r.name }}</a></h3>
-        <p>{{ r.summary }}</p>
-      </article>
-      {%- endfor %}
-    </div>
-  </section>
-</div>
+<section class="sec" id="open-source" aria-labelledby="oss-title">
+  <h2 class="sec-head" id="oss-title">open source</h2>
+  <ul class="columns four">
+    {%- for r in site.data.open_source %}
+    <li>
+      <a class="t-title" href="https://github.com/{{ r.repo }}">{{ r.name | downcase }}</a>
+      <span class="caps">{{ r.language }} · {{ r.license }}</span>
+      <p>{{ r.summary }}</p>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>

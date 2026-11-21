@@ -1,7 +1,11 @@
 ---
 layout: default
 ---
-<div class="wrap page">
-  {% include page-head.html eyebrow=page.eyebrow title=page.title intro=page.intro %}
+<p class="ghost" aria-hidden="true">{{ page.eyebrow | downcase }}</p>
+<article class="detail">
+  <header class="intro-block">
+    <h1 class="page-title">{{ page.title | downcase }}</h1>
+    {%- if page.intro %}<p class="intro">{{ page.intro }}</p>{% endif %}
+  </header>
   <div class="prose">{{ content }}</div>
-</div>
+</article>
