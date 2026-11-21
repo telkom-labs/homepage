@@ -1,0 +1,20 @@
+# Books shown at the top of the Projects page, in display order. `authors` are ids from _data/collaborators.yml.
+- title: Peer-to-Peer Web Applications
+  url: https://www.manning.com/books/peer-to-peer-web-applications-cx
+  link_label: manning.com
+  publisher: Manning
+  year: 2023
+  status: Retired
+  authors: [platt]
+  cover: /assets/images/books/peer-to-peer-web-applications.jpg
+  cover_width: 360
+  cover_height: 451
+  summary: "A book on web apps that connect users directly, with no central server. Readers build Code Radio, a music streaming app that runs entirely on users' machines."
+  points:
+    - JavaScript apps that run fully client-side
+    - Peer-to-peer connections in place of a central server
+    - Cryptography for authentication and data ownership
+    - Secure apps with and without a blockchain
+    - Packaging, distribution and community contributions
+  tags: [Peer-to-peer, Cryptography, Blockchain, JavaScript]
+  note: Early access from July 2023, last updated October 2023, retired.

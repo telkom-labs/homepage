@@ -206,6 +206,25 @@ pre { margin: 0; padding: 18px 20px; overflow-x: auto; white-space: pre-wrap; ov
 .card h3 a:hover { text-decoration: underline; }
 .card-top { display: flex; align-items: center; gap: 10px; font-size: 12px; }
 .tags { font-size: 12px; }@media (max-width: 900px) { .cards.four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* books: the cover is a faint ink print on the left that fades out like the home page network;
+   the text sits against the right edge. On narrow screens the text drops below the cover. */
+.book { display: flex; flex-wrap: wrap; align-items: center; }
+.book + .book { margin-top: 24px; }
+.book-cover {
+  display: block; flex: 0 1 480px; width: 480px; max-width: 100%; height: auto; margin-right: -60px;
+  opacity: .3; mix-blend-mode: multiply; filter: grayscale(1) sepia(.3);
+  -webkit-mask-image: linear-gradient(to left, transparent, rgba(0,0,0,.35) 22%, #000 46%), linear-gradient(to bottom, transparent, #000 16%, #000 84%, transparent);
+  mask-image: linear-gradient(to left, transparent, rgba(0,0,0,.35) 22%, #000 46%), linear-gradient(to bottom, transparent, #000 16%, #000 84%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+.book-body { position: relative; flex: 0 1 36em; min-width: min(100%, 320px); max-width: 36em; margin-left: auto; display: flex; flex-direction: column; gap: 12px; }
+.book-body h3 { font: 600 26px/1.15 var(--sans); letter-spacing: -.015em; }
+.book-body h3 a { color: var(--blue); text-decoration: none; }
+.book-body h3 a:hover { text-decoration: underline; }
+.book-points { display: flex; flex-direction: column; gap: 6px; padding-block: 4px; font-size: 14px; }
+.book-note { font-size: 13px; }
 @media (max-width: 640px) { .cards.two, .cards.four { grid-template-columns: minmax(0, 1fr); } }
 
 .project { display: grid; grid-template-columns: minmax(0, 1fr) 16em; gap: 56px; align-items: start; }

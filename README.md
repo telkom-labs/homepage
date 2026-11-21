@@ -19,6 +19,7 @@ A static Jekyll site, built and hosted by GitHub Pages from the `main` branch. N
 |---|---|
 | Publications | `_publications/`, one Markdown file per paper |
 | Projects | `_projects/`, one Markdown file per project |
+| Books | `_data/books.yml`, shown first on the Projects page |
 | Collaborators | `_data/collaborators.yml` |
 | Standards and research areas | `_data/standards.yml`, `_data/areas.yml` |
 | Styles | `assets/css/main.css` |

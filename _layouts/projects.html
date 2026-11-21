@@ -6,6 +6,28 @@ layout: default
   {% include page-head.html eyebrow=page.eyebrow title=page.heading intro=page.intro %}
 
   <section class="proj-sec">
+    <h2 class="rule rule-projects">Books</h2>
+    {%- for b in site.data.books %}
+    <article class="book">
+      <img class="book-cover" src="{{ b.cover | relative_url }}" alt="" width="{{ b.cover_width }}" height="{{ b.cover_height }}">
+      <div class="book-body">
+        <p class="card-top"><span class="chip{% if b.status == 'Live' %} y{% endif %}">{{ b.status }}</span><span>{{ b.publisher }} · {{ b.year }}</span></p>
+        <h3><a href="{{ b.url }}">{{ b.title }}</a></h3>
+        <p>{{ b.summary }}</p>
+        <ul class="book-points">
+          {%- for point in b.points %}
+          <li><span class="sq sq-projects"></span>{{ point }}</li>
+          {%- endfor %}
+        </ul>
+        <p class="tags">{{ b.tags | join: " · " }}</p>
+        <p class="team">{% include names.html ids=b.authors %}</p>
+        <p class="book-note">{{ b.note }} <a class="out-link" href="{{ b.url }}">{{ b.link_label }}</a></p>
+      </div>
+    </article>
+    {%- endfor %}
+  </section>
+
+  <section class="proj-sec">
     <h2 class="rule rule-projects">Products</h2>
     <div class="cards two">
       {%- for p in products %}
